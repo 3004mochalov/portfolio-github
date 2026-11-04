@@ -1,0 +1,36 @@
+/* Дополняет существующую палитру и типографику витрины. */
+[hidden]{display:none!important}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-width:0}
+.catalog-options{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:24px}
+.catalog-options label{display:flex;align-items:center;gap:8px;font-size:13px}
+.catalog-options input,.catalog-options select{max-width:180px;min-height:44px;padding:8px;border:1px solid var(--line);background:var(--white);color:var(--ink)}
+.customer-dialog{width:min(680px,calc(100% - 28px));max-height:90dvh;padding:38px 28px;border:0;background:var(--paper);color:var(--ink);overflow:auto;overflow-wrap:anywhere}
+.customer-dialog::backdrop{background:rgba(31,38,31,.45)}
+.customer-dialog h2{margin:12px 0 24px;font:500 clamp(28px,5vw,44px)/1.15 var(--serif)}
+.customer-dialog p,.detail-copy p{font-size:15px;line-height:1.65}
+.customer-dialog label,.detail-copy form label{display:block;margin-top:16px;font-size:14px}
+.customer-dialog input,.customer-dialog select,.detail-copy form input,.detail-copy form select,.detail-copy form textarea{display:block;width:100%;min-width:0;min-height:44px;margin-top:7px;padding:10px;border:1px solid #9ba195;background:var(--white);color:var(--ink);font:16px var(--sans);border-radius:0}
+.customer-dialog [aria-invalid=true]{border-color:#9c342a}
+.customer-dialog .check-label{display:flex;align-items:center;gap:10px}
+.customer-dialog input[type=checkbox]{width:20px;min-height:20px;flex:none}
+.field-error{color:#9c342a;margin:5px 0;font-size:13px!important}
+.field-error:empty{display:none}
+.review,.order-history{padding:16px 0;border-bottom:1px solid var(--line)}
+.related-product{display:block;width:100%;padding:12px 0;background:none;border:0;border-bottom:1px solid var(--line);text-align:left;color:var(--ink);font:14px/1.5 var(--sans);cursor:pointer}
+.journal-card .text-link{margin-top:20px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;min-height:44px}
+.product-name,.product-desc,.cart-line-name,.journal-card{overflow-wrap:anywhere}
+.cart-line>div{min-width:0}.line-controls{flex-wrap:wrap}.product-bottom{flex-wrap:wrap;gap:8px}
+.button:disabled{opacity:.6;cursor:wait}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--sage-dark);outline-offset:3px}
+.appear{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}.appear.appeared{opacity:1;transform:none}
+@media(max-width:640px){
+ .site-header{height:auto;min-height:76px;padding:14px 18px;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+ .wordmark{font-size:10px;letter-spacing:.08em;overflow-wrap:anywhere}
+ .main-nav{grid-row:2;grid-column:1/-1;justify-content:space-between;gap:12px}
+ .header-actions{gap:6px}.cart-trigger{padding:4px;font-size:12px;min-height:44px}.cart-trigger span{margin-left:2px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .customer-dialog{padding:38px 20px 24px}.customer-dialog .button{width:100%}
+ .cart-drawer{padding:18px}.cart-line{grid-template-columns:52px minmax(0,1fr);gap:10px}.cart-line img{width:52px;height:70px}.line-price{grid-column:2}
+ .footer-bottom span:last-child{max-width:100%}.hero h1{overflow-wrap:break-word}
+ .catalog-options{flex-direction:column}.catalog-options label{justify-content:space-between}.catalog-options input,.catalog-options select{max-width:60%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.appear{opacity:1;transform:none}}

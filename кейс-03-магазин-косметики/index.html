@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Магазин натуральной косметики</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="customer.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#home" id="brandName">VERDE / BOTANICA</a>
+    <nav class="main-nav" aria-label="Главная навигация">
+      <a href="#catalog">Каталог</a><a href="#story">О бренде</a><a href="#journal">Журнал</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="openAccount">Кабинет</button>
+      <button class="admin-trigger" id="openAdmin" hidden>Управление</button>
+      <button class="cart-trigger" id="openCart" aria-label="Открыть корзину">
+        Корзина <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" id="heroEyebrow"></p>
+        <h1 id="heroTitle"></h1>
+        <p class="hero-text" id="heroText"></p>
+        <a class="button button-dark" href="#catalog">Выбрать уход <span aria-hidden="true">↘</span></a>
+        <p class="hero-note" id="heroNote"></p>
+      </div>
+      <figure class="hero-art">
+        <img id="heroImage" alt="Натуральная косметика бренда">
+        <figcaption id="heroCaption"></figcaption>
+      </figure>
+      <span class="hero-index" aria-hidden="true">01 / 04</span>
+    </section>
+
+    <section class="trust-strip" aria-label="Преимущества бренда">
+      <span>Короткий состав</span><span>Без тестов на животных</span><span>Малые партии</span><span>Доставка по России</span>
+    </section>
+
+    <section class="catalog-section" id="catalog">
+      <div class="section-heading">
+        <div><p class="eyebrow">Уход без лишнего</p><h2>Найди свой ритуал</h2></div>
+        <p class="section-aside">Формулы, которые объясняют себя.<br>Выбирай по задаче и составу.</p>
+      </div>
+      <div class="catalog-tools">
+        <div class="filters" id="filters" aria-label="Фильтр товаров"></div>
+        <label class="search-box"><span class="sr-only">Поиск товаров</span>
+          <input id="search" type="search" placeholder="Поиск по каталогу…">
+        </label>
+      </div>
+      <p class="result-count" id="resultCount" aria-live="polite"></p>
+      <div class="catalog-options"><label>Цена до, ₽ <input id="maxPrice" type="number" min="0" placeholder="Любая"></label><label>Сортировать <select id="catalogSort"><option value="default">По умолчанию</option><option value="price">По возрастанию цены</option><option value="name">По названию</option></select></label></div>
+      <div class="product-grid" id="productGrid"></div>
+      <button class="button" id="loadMore" hidden>Показать ещё 24</button>
+      <div class="empty-state" id="emptyState" hidden>По этому запросу пока ничего нет. Попробуй изменить фильтр.</div>
+    </section>
+
+    <section class="editorial" id="story">
+      <div class="editorial-image"><img id="storyImage" alt="Ингредиенты и текстуры"></div>
+      <div class="editorial-copy">
+        <p class="eyebrow">Меньше, но лучше</p><h2 id="storyTitle"></h2>
+        <p id="storyText"></p><a class="text-link" href="#journal">Как мы создаём формулы <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="journal-section" id="journal">
+      <div class="section-heading"><div><p class="eyebrow">Заметки о коже</p><h2>Журнал</h2></div>
+        <p class="section-aside">Понятно о составах,<br>ритуалах и привычках.</p></div>
+      <div class="journal-grid" id="journalGrid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand"><a class="wordmark" href="#home" id="footerBrand"></a>
+        <p id="footerBrandNote"></p></div>
+      <div class="footer-column"><h3>Покупателям</h3><a href="#catalog">Каталог</a><a href="#story">О бренде</a><span id="footerShipping"></span></div>
+      <div class="footer-column"><h3>Связаться</h3><a id="footerEmail" href="#"></a><a id="footerInstagram" href="#" target="_blank" rel="noreferrer"></a><a id="footerTelegram" href="#" target="_blank" rel="noreferrer"></a></div>
+    </div>
+    <div class="footer-bottom"><span id="footerLine"></span><span id="footerLegal"></span></div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Корзина" aria-hidden="true">
+    <div class="drawer-head"><div><p class="eyebrow">Твой заказ</p><h2>Корзина <span id="drawerCount"></span></h2></div>
+      <button class="icon-button" id="closeCart" aria-label="Закрыть корзину">×</button></div>
+    <div class="cart-lines" id="cartLines"></div>
+    <div class="drawer-bottom">
+      <div class="discount-progress" id="freeDeliveryNote"></div>
+      <div class="cart-total"><span>Итого</span><strong id="cartTotal"></strong></div>
+      <button class="button button-dark checkout-button" id="checkoutButton">Перейти к оформлению <span aria-hidden="true">→</span></button>
+      <p class="secure-note">Пока это демонстрационный режим: заказ сохраняется локально.</p>
+    </div>
+  </aside>
+
+  <dialog class="product-dialog" id="productDialog">
+    <button class="icon-button dialog-close" id="closeProduct" aria-label="Закрыть">×</button>
+    <div id="productDetail"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="customer-dialog" id="customerDialog" aria-labelledby="customerTitle"><button class="icon-button dialog-close" id="closeCustomer" aria-label="Закрыть">×</button><div id="customerContent"></div></dialog>
+  <script src="../shared/api.js"></script>
+  <script src="account-server.js"></script>
+  <script src="customer.js"></script>
+  <script src="core.js"></script>
+</body>
+</html>

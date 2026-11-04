@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- CHECKOUT REVAMP — режим serve.
+     ЗАПУСК: в этой папке «npx serve .» или «python -m http.server 8000».
+     ЗАКАЗЧИКУ: правишь ТОЛЬКО config.json (товары, цены, доставка, тексты).
+     accept apiEndpoint: null = демо (номер заказа выдумывается),
+     впиши URL API магазина — заказы полетят туда. -->
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оформление заказа</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#" id="logo" onclick="return false"></a>
+    <span class="support" id="support"></span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="load-error" id="loadError">
+    Не загрузился config.json — запусти папку через сервер
+    (npx serve . или python -m http.server), а не двойным кликом.
+  </div>
+  <div class="steps" id="steps"></div>
+  <p id="demoNotice" role="status">Демо оформления: товары и пункты выдачи тестовые, оплата не списывается.</p>
+
+  <!-- ШАГ 1: корзина -->
+  <div id="viewCart">
+    <h1 id="cartTitle"></h1>
+    <p class="sub" id="cartSub"></p>
+    <div class="layout">
+      <div>
+        <div id="cartBox"></div>
+        <div class="promo">
+          <input id="promoIn" type="text" autocomplete="off">
+          <button class="btn btn-ghost" id="promoBtn" style="width:auto"></button>
+        </div>
+        <div class="promo-msg" id="promoMsg"></div>
+        <div class="nav-btns"><button class="btn" id="toDelivery" style="width:auto"></button></div>
+      </div>
+      <aside class="summary" id="summary"></aside>
+    </div>
+  </div>
+
+  <!-- ШАГ 2: доставка и оплата -->
+  <div id="viewDlv" style="display:none">
+    <h1 id="dlvTitle"></h1>
+    <p class="sub" id="dlvSub"></p>
+    <div class="layout">
+      <div>
+        <div class="fsec">
+          <h3 id="ctTitle"></h3>
+          <label id="lbName" for="fName"></label>
+          <input id="fName" type="text" autocomplete="name">
+          <div class="ferr" id="errName"></div>
+          <label id="lbPhone" for="fPhone"></label>
+          <input id="fPhone" type="tel" autocomplete="tel">
+          <div class="ferr" id="errPhone"></div>
+          <label id="lbMail" for="fMail"></label>
+          <input id="fMail" type="email" autocomplete="email">
+          <div class="ferr" id="errMail"></div>
+        </div>
+        <div class="fsec">
+          <h3 id="addrTitle"></h3>
+          <label id="lbCity" for="fCity"></label>
+          <input id="fCity" type="text" autocomplete="address-level2">
+          <div class="ferr" id="errCity"></div>
+          <label id="lbAddr" for="fAddr"></label>
+          <input id="fAddr" type="text" autocomplete="street-address">
+          <div class="ferr" id="errAddr"></div>
+          <div id="pickupField" hidden><label for="pickupPoint">Пункт выдачи *</label><select id="pickupPoint"></select><div class="ferr" id="errPickup">Выбери пункт выдачи.</div></div>
+          <label id="lbMsg" for="fMsg"></label>
+          <textarea id="fMsg" style="min-height:64px"></textarea>
+        </div>
+        <div class="opt-group"><div class="opt-title" id="mTitle"></div><div id="methods"></div></div>
+        <div class="opt-group"><div class="opt-title" id="pTitle"></div><div id="pays"></div></div>
+        <div class="form-err" id="formErr" role="alert"></div>
+        <div class="nav-btns">
+          <button class="btn btn-ghost" id="backBtn"></button>
+          <button class="btn" id="sendBtn" style="width:auto"></button>
+        </div>
+      </div>
+      <aside class="summary" id="summary2"></aside>
+    </div>
+  </div>
+
+  <!-- ШАГ 3: успех -->
+  <div id="viewOk" style="display:none">
+    <div class="success">
+      <div class="tick">
+        <svg width="30" height="30" viewBox="0 0 20 20" fill="none"><path d="M3.5 10.5l4 4 9-10" stroke="#346538" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1 id="okTitle"></h1>
+      <p id="okText"></p>
+      <button class="btn" id="againBtn" style="width:auto"></button>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap"><span id="logo2"></span></div></footer>
+
+<script src="../shared/api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

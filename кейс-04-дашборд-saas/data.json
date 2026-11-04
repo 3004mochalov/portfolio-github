@@ -1,0 +1,17 @@
+{
+  "workspace": "Acme Workspace",
+  "currency": "RUB",
+  "goal": 500000,
+  "revenue": [{"month":"Май","amount":198000},{"month":"Июн","amount":224000},{"month":"Июл","amount":218000},{"month":"Авг","amount":276000},{"month":"Сен","amount":312000},{"month":"Окт","amount":368000}],
+  "funnel": [{"name":"Посетители","value":12480},{"name":"Регистрации","value":3120},{"name":"Активации","value":1480},{"name":"Оплата","value":624}],
+  "customers": [
+    {"name":"Студия Север","plan":"Business","status":"active","mrr":42000,"date":"2026-10-28"},
+    {"name":"Forma Digital","plan":"Pro","status":"active","mrr":18000,"date":"2026-10-25"},
+    {"name":"Точка роста","plan":"Business","status":"active","mrr":42000,"date":"2026-10-22"},
+    {"name":"Monday Team","plan":"Starter","status":"trial","mrr":0,"date":"2026-10-20"},
+    {"name":"Бюро Практика","plan":"Pro","status":"active","mrr":18000,"date":"2026-10-18"},
+    {"name":"Кедр","plan":"Starter","status":"cancelled","mrr":0,"date":"2026-10-16"},
+    {"name":"Orbit Systems","plan":"Business","status":"active","mrr":42000,"date":"2026-10-12"},
+    {"name":"Линия","plan":"Pro","status":"trial","mrr":0,"date":"2026-10-10"}
+  ]
+}

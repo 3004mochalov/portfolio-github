@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- ВИЗИТКА РЕПЕТИТОРА — режим serve.
+     ЗАПУСК: в этой папке выполни «npx serve .» или «python -m http.server 8000»,
+     открой показанный адрес. Двойным кликом тоже откроется, но тексты подтянутся
+     только через сервер (config.json грузится запросом).
+     ЗАКАЗЧИКУ: правишь ТОЛЬКО config.json. Картинку положи рядом с этим файлом
+     и впиши её имя в поле "photo" (например "photo.jpg"). -->
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Визитка репетитора</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top" id="logo"></a>
+    <nav id="mainNav"></nav>
+    <span class="head-cta">
+      <a class="phone" id="headPhone" href="#"></a>
+      <a class="btn btn-small" id="headCta" href="#signup"></a>
+    </span>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap"><div class="load-error" id="loadError">
+    Не загрузился config.json — запусти папку через сервер
+    (npx serve . или python -m http.server), а не двойным кликом.
+  </div></div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="tag reveal" id="heroBadge"></span>
+      <h1 class="reveal" id="heroTitle"></h1>
+      <p class="lead reveal" id="heroLead"></p>
+      <div class="btn-row reveal">
+        <a class="btn" href="#signup" id="heroCta1"></a>
+        <a class="btn btn-ghost" href="#plans" id="heroCta2"></a>
+      </div>
+      <div class="bento" id="stats"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="reveal" id="aboutTitle"></h2>
+      <p class="sec-sub reveal" id="aboutSub"></p>
+      <div class="about">
+        <img class="reveal" id="aboutPhoto" src="" alt="">
+        <div class="reveal" id="aboutText"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results">
+    <div class="wrap">
+      <h2 class="reveal" id="resTitle"></h2>
+      <p class="sec-sub reveal" id="resSub"></p>
+      <ul class="res" id="resList"></ul>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="wrap">
+      <h2 class="reveal" id="plansTitle"></h2>
+      <p class="sec-sub reveal" id="plansSub"></p>
+      <div class="plans" id="plansGrid"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2 class="reveal" id="faqTitle"></h2>
+      <p class="sec-sub reveal" id="faqSub"></p>
+      <div class="faq reveal" id="faqList"></div>
+    </div>
+  </section>
+
+  <section id="signup">
+    <div class="wrap">
+      <h2 class="reveal" id="formTitle"></h2>
+      <p class="sec-sub reveal" id="formSub"></p>
+      <div class="form-card reveal">
+        <form id="leadForm" novalidate>
+          <label for="fName" id="lbName"></label>
+          <input id="fName" name="name" type="text" autocomplete="name" required>
+          <label for="fPhone" id="lbPhone"></label>
+          <input id="fPhone" name="phone" type="tel" autocomplete="tel" required>
+          <p class="hint" id="phoneHint"></p>
+          <label for="fMsg" id="lbMsg"></label>
+          <textarea id="fMsg" name="msg"></textarea>
+          <div style="margin-top:24px"><button class="btn" type="submit" id="sendBtn"></button></div>
+        </form>
+        <div class="form-ok" id="formOk"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><span id="footName"></span> · <a id="footPhone" href="#"></a></div>
+    <div><a id="footTg" href="#"></a> · <a id="footVk" href="#"></a></div>
+  </div>
+</footer>
+
+<script src="../shared/api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

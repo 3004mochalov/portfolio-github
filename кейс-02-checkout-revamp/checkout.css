@@ -1,0 +1,5 @@
+[hidden]{display:none!important}
+#pickupPoint{width:100%;min-height:44px;padding:12px;font:inherit;border:1px solid #aaa;background:#fff;color:#222}
+#demoNotice{padding:14px;border:1px solid #ddd;font-size:14px;line-height:1.5}
+button:disabled{opacity:.6;cursor:wait}
+.bad{outline:1px solid #a22}
